@@ -1,6 +1,3 @@
-import type { EndpointOutput, Request } from '@sveltejs/kit';
-import type { Locals } from '$lib/types';
-
 /*
 	This module is used by the /todos.json and /todos/[uid].json
 	endpoints to make calls to api.svelte.dev, which stores todos
@@ -14,11 +11,7 @@ import type { Locals } from '$lib/types';
 
 const base = 'https://api.svelte.dev';
 
-export async function api(
-	request: Request<Locals>,
-	resource: string,
-	data?: Record<string, unknown>
-): Promise<EndpointOutput> {
+export async function api(request, resource, data) {
 	// user must have a cookie set
 	if (!request.locals.userid) {
 		return { status: 401 };
